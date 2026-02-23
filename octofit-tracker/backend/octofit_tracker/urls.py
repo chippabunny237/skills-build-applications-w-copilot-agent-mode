@@ -17,6 +17,7 @@ Including another URLconf
 
 from django.contrib import admin
 from django.urls import path, include
+import os
 from rest_framework import routers
 from . import views
 from rest_framework.decorators import api_view
@@ -32,6 +33,7 @@ router.register(r'leaderboard', views.LeaderboardViewSet)
 
 @api_view(['GET'])
 def api_root(request, format=None):
+
     return Response({
         'users': reverse('user-list', request=request, format=format),
         'teams': reverse('team-list', request=request, format=format),
